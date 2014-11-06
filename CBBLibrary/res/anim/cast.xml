@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <!-- Flick back -->
+    <translate 
+        android:startOffset="00"
+      	android:fromXDelta="0%"
+      	android:toXDelta="100%" 
+      	android:duration="300">
+   	</translate>
+   	
+   	<rotate
+   	    android:startOffset="000"
+       	android:fromDegrees="0"
+       	android:toDegrees="30"
+       	android:pivotX="50%"
+       	android:pivotY="50%"
+       	android:duration="300"/> 	
+   	
+   	<!-- Flick Forward-->
+   	<translate 
+        android:startOffset="300"
+      	android:fromYDelta="0%"
+      	android:toYDelta="-75%" 
+      	android:duration="150">
+   	</translate>
+   	
+   	<translate 
+        android:startOffset="300"
+      	android:fromXDelta="0%"
+      	android:toXDelta="-200%" 
+      	android:duration="300">
+   	</translate>
+   	
+   	<rotate
+   	    android:startOffset="300"
+       	android:fromDegrees="0"
+       	android:toDegrees="-60"
+       	android:pivotX="50%"
+       	android:pivotY="50%"
+       	android:duration="300"/>
+   	
+</set>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Does not work for some reason in my java class
+    <array name="splat_image_ids">
+       <item>@drawable/splat_0_0</item>
+       <item>@drawable/splat_0_1</item>
+       <item>@drawable/splat_0_2</item>
+       
+       <item>@drawable/splat_1_0</item>
+       <item>@drawable/splat_1_1</item>
+       <item>@drawable/splat_1_2</item>
+       
+       <item>@drawable/splat_2_0</item>
+       <item>@drawable/splat_2_1</item>
+       
+       <item>@drawable/splat_3_0</item>
+       <item>@drawable/splat_3_1</item>
+       <item>@drawable/splat_3_2</item>
+   </array>
+   
+    <array name="game_btn_ids">
+       <item>@drawable/btn_blue</item>
+       <item>@drawable/btn_green</item>
+       <item>@drawable/btn_orange</item>
+       <item>@drawable/btn_purple</item>
+       <item>@drawable/btn_red</item>
+    </array>
+    
+    <array name="anim_ids">
+       <item>@anim/splat0</item>
+       <item>@anim/splat1</item>
+       <item>@anim/splat2</item>
+       <item>@anim/splat3</item>
+       <item>@anim/splat4</item>
+       <item>@anim/splat5</item>
+       <item>@anim/splat6</item>
+    </array>
+    -->
+    
+</resources>

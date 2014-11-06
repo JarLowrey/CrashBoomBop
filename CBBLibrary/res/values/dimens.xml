@@ -1,0 +1,48 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    
+    <dimen name="activity_margin_med">32dp</dimen>
+    <dimen name="activity_margin_large">45dp</dimen>
+    <dimen name="activity_margin_xlarge">75dp</dimen>    
+    <dimen name="activity_margin_xxlarge">100dp</dimen>
+    
+    <dimen name="game_over_score_width">140dp</dimen>
+    <dimen name="game_over_response_time_width">180dp</dimen>
+    <dimen name="game_over_btns_width">210dp</dimen>
+    <dimen name="game_over_dialog_width">290dp</dimen>
+    <dimen name="game_over_dialog_height">220dp</dimen>
+
+    <dimen name="navigation_btn_width">150dp</dimen>
+    <dimen name="navigation_btn_height">55dp</dimen>
+    
+    <dimen name="navigation_btn_large_width">180dp</dimen>
+    <dimen name="navigation_btn_large_height">65dp</dimen>
+    <dimen name="navigation_btn_large_margin">40dp</dimen>
+    
+    <dimen name="ic_graph_and_play_btn">27.5dp</dimen>
+    <dimen name="ic_small">30dp</dimen>
+    <dimen name="ic_med">40dp</dimen>
+    <dimen name="ic_large">50dp</dimen>
+    
+    <dimen name="game_heart_length">20dp</dimen>
+    <dimen name="game_heart_margin">5dp</dimen>
+    
+    <dimen name="game_splat_length">250dp</dimen>
+    <dimen name="game_fail_or_reward_image_length">150dp</dimen>
+    <dimen name="game_moving_btn_side_length">95dp</dimen>
+    <dimen name="game_moving_margin_top">150dp</dimen><!-- should be below score=activity_margin_xlarge + score_canvas_height -->
+    
+    <dimen name="ad_banner_margin">130dp</dimen>
+    
+    <dimen name="score_canvas_height">75dp</dimen>
+    <dimen name="score_size">60dp</dimen>
+    <dimen name="score_outline_size">3dp</dimen>
+    
+    <dimen name="medal_len">50dp</dimen>
+    
+    <dimen name="logo_len">75dp</dimen>
+    <dimen name="logo_text_padding">5dp</dimen>
+</resources>
