@@ -2,29 +2,20 @@ package support;
 
 import java.util.ArrayList;
 
-import com.jtronlabs.cbblibrary.R;
-
-public class GameModel{	
-	private final int scoreIncreaseFactorForResponseTime=5000;
-	private final int MAX_SCORE_INC=35;
+public class GameModel extends GameAttributes{
 	
-	public Case currentCase;
+	private Case currentCase;
 	public Case[] allCases = Case.values();
 	public int currentPosInCombo=0;
 	public int clearScreenTimeLength=1000;
 	public boolean isCombo=false;
 	
-	public int score=0,streak=0,life=0, level=1;
+	public int streak=0,life=0, level=1;
 	public int numBonusCases=0,numCasesFailed=0,numBonusShakesOrTaps=0,totalNumBonusPoints=0,
 			numCombosOccurred=0,numCombosPassed=0,numCasesPassed=0,highestStreakThisGame;
 	
 	public Case[] casesInCombo = new Case[3];
 	
-	/*The different game cases*/
-	//NOTE::::::MANYSHAKES,MANYTAPS,MOVINGBTN are considered BONUS Cases
-	public enum Case{
-		TAP,XSHAKE,YSHAKE,ZSHAKE,CAST,MANYSHAKESX,MANYTAPS,MOVINGBTN
-	}
 	public ArrayList<Case> bonusCases = new ArrayList<Case>();
 
 	public GameModel(){
@@ -57,7 +48,7 @@ public class GameModel{
 		}else if(isCombo){
 			//Combo passed!
 			if(casesInCombo.length==currentPosInCombo){
-				score+=(int)(streak*1.5);
+				increaseScore( (int)(streak*1.5) );
 				resetCombo();
 				currentCase=getRandomNonBonusCase();
 				isCombo=false;
@@ -106,7 +97,7 @@ public class GameModel{
 		double check = (level/10)*100+100*level;//Initially, every 100 score level increases. Every 10 levels, score required becomes 100 bigger
 		int lvlTemp=level;
 		
-		if(score>check){
+		if(getScore()>check){
 			level++;
 		}
 		//as level progresses lower the time game spends on a clear screen
@@ -148,31 +139,6 @@ public class GameModel{
 			 */
 			failTime= (int)(-(1700.0/9.0)*level+28700.0/9.0);
 		}
-		//optimize
-//		switch(level){
-//		case 1:
-//			break;
-//		case 2:
-//			break;
-//		case 3:
-//			break;
-//		case 4:
-//			break;
-//		case 5:
-//			break;
-//		case 6:
-//			break;
-//		case 7:
-//			break;
-//		case 8:
-//			break;
-//		case 9:
-//			break;
-//		case 10:
-//			break;
-//		default:
-//			break;
-//		}
 		if(isCombo && currentPosInCombo==1){//give extra time @ beginning of combo
 			failTime=(int)(failTime*1.2);
 		}
@@ -181,112 +147,15 @@ public class GameModel{
 	
 	public int getBonusEndTime(){
 		switch(currentCase){
-		case MANYSHAKESX:
-			return 6000;
-		case MANYTAPS:
-			return 6000;
-		case MOVINGBTN:
-			return 10000;
-		default:
-			return 0;
-		}
-	}
-	
-	public String getTextForCase(Case myCase){
-		String str="";
-		
-		switch(myCase){
-			case TAP:
-				str="Tap";
-				break;
-			case XSHAKE:
-				str="Side to Side";
-				break;
-			case YSHAKE:
-				str="Up and Down";
-				break;
-			case ZSHAKE:
-				str="In and Out";
-				break;
-			case CAST:
-				str="Cast";
-				break;
 			case MANYSHAKESX:
-				str="BONUS\nShake! Shake! Shake!";
-				break;
+				return 6000;
 			case MANYTAPS:
-				str="BONUS\nTap! Tap! Tap!";
-				break;
+				return 6000;
 			case MOVINGBTN:
-				str="BONUS\nTap the buttons!";
-				break;
-//			case SWIPE:
-//				str="SWIPE";
-//				break;
+				return 10000;
 			default:
-				str="this should never happen";
-				break;
+				return 0;
 		}
-		return str;
-	}
-	
-	public String getTextForCase(){
-		return getTextForCase(currentCase);
-	}
-	
-	public int getAnimationId(){
-		return getAnimationId(currentCase);
-	}
-	
-	public int getAnimationId(Case desiredAnimationCase){
-		int animationId;
-		switch(desiredAnimationCase){
-		case CAST:
-			animationId=R.anim.cast;
-			break;
-		case MANYSHAKESX:
-			animationId=R.anim.x_shake;
-			break;
-//		case MANYTAPS:
-//			animationId=R.anim.tap;
-//			break;
-		case MOVINGBTN:
-			animationId=R.anim.tap;
-			break;
-//		case TAP:
-//			animationId=R.anim.tap;
-//			break;
-		case XSHAKE:
-			animationId=R.anim.x_shake;
-			break;
-		case YSHAKE:
-			animationId=R.anim.y_shake;
-			break;
-		case ZSHAKE:
-			animationId=R.anim.z_shake;
-			break;
-//		case SWIPE:
-//			animationId=R.anim.swipe;
-//			break;
-		default:
-			animationId=R.anim.none;
-			break;
-		}
-		return animationId;
-	}
-	
-	public int increaseScore(long responseTime){
-		//if the passed value is a long, then it is a time. if score is >35, throttle it to 35
-		int tmp=(int)(scoreIncreaseFactorForResponseTime/responseTime);
-		score += (tmp>MAX_SCORE_INC) ? (MAX_SCORE_INC):(tmp);
-		return tmp;
-	}
-	
-	public int increaseScore(int amountToIncreaseScore){
-		//if the passed value is an int then directly increase score by that int
-		amountToIncreaseScore=(amountToIncreaseScore>MAX_SCORE_INC) ? (MAX_SCORE_INC):(amountToIncreaseScore);
-		score+=amountToIncreaseScore;
-		return amountToIncreaseScore;
 	}
 	
 	public boolean passStreakMileStone(){
@@ -302,5 +171,7 @@ public class GameModel{
 		}		
 		return passedStreakMilestone;
 	}
+	
+	public Case getCurrentCase(){ return currentCase; }
 	
 }

@@ -141,26 +141,44 @@ public final class R {
         public static int toast_exciting=0x7f020032;
     }
     public static final class id {
-        public static int gameOverAccept=0x7f0c0010;
-        public static int gameOverAvgTimeTitle=0x7f0c000c;
-        public static int gameOverAvgTimeValue=0x7f0c000d;
-        public static int gameOverBestScoreTitle=0x7f0c000a;
-        public static int gameOverBestScoreValue=0x7f0c000b;
-        public static int gameOverCurrentScoreTitle=0x7f0c0007;
-        public static int gameOverCurrentScoreValue=0x7f0c0008;
-        public static int gameOverMiddleContent=0x7f0c0003;
-        public static int gameOverRoot=0x7f0c0000;
-        public static int gameOverShare=0x7f0c0011;
-        public static int gameOverSpaceAbove=0x7f0c0002;
-        public static int gameOverSpaceBelow=0x7f0c000e;
-        public static int gameOverTitle=0x7f0c0001;
-        public static int gameOverViewsOnBottom=0x7f0c000f;
-        public static int gameOverViewsOnRight=0x7f0c0005;
-        public static int gameoverBestScore=0x7f0c0009;
-        public static int gameoverCurrentScore=0x7f0c0006;
-        public static int gameoverMedal=0x7f0c0004;
-        public static int toastText=0x7f0c0013;
-        public static int toast_layout_root=0x7f0c0012;
+        public static int bonusTimeRemaining=0x7f0c0005;
+        public static int detectTapArea=0x7f0c0001;
+        public static int fail_or_reward_image=0x7f0c0002;
+        public static int gameOverAccept=0x7f0c0019;
+        public static int gameOverAvgTimeTitle=0x7f0c0016;
+        public static int gameOverAvgTimeValue=0x7f0c0017;
+        public static int gameOverBestScoreTitle=0x7f0c0014;
+        public static int gameOverBestScoreValue=0x7f0c0015;
+        public static int gameOverCurrentScoreTitle=0x7f0c0011;
+        public static int gameOverCurrentScoreValue=0x7f0c0012;
+        public static int gameOverMiddleContent=0x7f0c000d;
+        public static int gameOverShare=0x7f0c001a;
+        public static int gameOverTitle=0x7f0c000c;
+        public static int gameOverViewsOnBottom=0x7f0c0018;
+        public static int gameOverViewsOnRight=0x7f0c000f;
+        public static int gameOverWindow=0x7f0c000b;
+        public static int gameWindow=0x7f0c0000;
+        public static int gameoverBestScore=0x7f0c0013;
+        public static int gameoverCurrentScore=0x7f0c0010;
+        public static int gameoverMedal=0x7f0c000e;
+        public static int heartGroup=0x7f0c0008;
+        public static int introLogo=0x7f0c001d;
+        public static int introText=0x7f0c001c;
+        public static int jtronlabs=0x7f0c0023;
+        public static int mainBtnsPlayAndProfile=0x7f0c001f;
+        public static int mainGraphic=0x7f0c001e;
+        public static int mainScreen=0x7f0c001b;
+        public static int movingBtn=0x7f0c0006;
+        public static int pauseText=0x7f0c000a;
+        public static int pause_or_play=0x7f0c0009;
+        public static int phoneImage=0x7f0c0004;
+        public static int playBtn=0x7f0c0020;
+        public static int profileBtn=0x7f0c0021;
+        public static int purchase=0x7f0c0022;
+        public static int score=0x7f0c0007;
+        public static int splat=0x7f0c0003;
+        public static int toastText=0x7f0c0025;
+        public static int toast_layout_root=0x7f0c0024;
     }
     public static final class integer {
         public static int game_mode_classic=0x7f090000;
@@ -168,8 +186,10 @@ public final class R {
         public static int game_mode_timed=0x7f090002;
     }
     public static final class layout {
-        public static int custom_gameover=0x7f030000;
-        public static int custom_toast=0x7f030001;
+        public static int activity_game=0x7f030000;
+        public static int activity_intro=0x7f030001;
+        public static int activity_main=0x7f030002;
+        public static int custom_toast=0x7f030003;
     }
     public static final class raw {
         public static int bonus_passed=0x7f050000;

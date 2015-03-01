@@ -1,18 +1,45 @@
 package support;
 
+import support.GameAttributes.Case;
+
 public class CaseChecks {
 	
 	//Values experimentally determined utilizing  "Physics Toolbox Accelerometer"-Vieyra Software
-	public float noise = (float) 1.1;
-    public float lightShake = (float) 1.8;
-    public float medShake = (float) 4;
-    public float heavyShake = (float)11;
-    public float veryHeavyShake = (float)17;
+	public static final double noise = 1.1,
+			lightShake = 1.8,
+			medShake = 4,
+			heavyShake = 11,
+			veryHeavyShake = 17;
+
+	private double lastX, lastY, lastZ;
+	private boolean accelInitialized=false;
     
-    GameModel myModel = new GameModel();
     
 	public enum CaseResult{
 		PASS,FAIL,NONE
+	}
+	
+	public CaseResult checkSensorForPassOrFail(double x, double y, double z,Case currentCase){       
+		if(!accelInitialized){
+        	lastX=x;
+        	lastY=y;
+        	lastZ=z;
+        	accelInitialized=true;
+        }
+	
+		double[] diffs={(x-lastX),(y-lastY),(z-lastZ)};
+		
+		CaseResult result = checkAllCasesExceptManyTapAndMovingBtn(currentCase, diffs);
+			
+		lastX = x;
+	    lastY = y;
+	    lastZ = z;
+	    
+	    return result;
+	}
+
+	public void resetSensor(){
+		accelInitialized=false;
 	}
 	
 	/**
@@ -21,7 +48,7 @@ public class CaseChecks {
 	 * @param diffs-parameters to check passedCase 
 	 * @return-PASS,FAIL, or NONE for these given Cases
 	 */
-	public CaseResult checkAllCasesExceptManyTapAndMovingBtn(GameModel.Case passedCase, float[] diffs){
+	public CaseResult checkAllCasesExceptManyTapAndMovingBtn(GameModel.Case passedCase, double[] diffs){
 		CaseResult result = CaseResult.NONE;
 		switch(passedCase){
 		case XSHAKE:
@@ -34,7 +61,7 @@ public class CaseChecks {
         	result=checkZShake(diffs);
         	break;
         case CAST:
-        	result=checkFlick(diffs);
+        	result=checkCast(diffs);
         	break;
         case TAP:
             result=checkForSensorMovementWhenExpectingTap(diffs);
@@ -45,20 +72,20 @@ public class CaseChecks {
 		return result;
 	}
 	
-	public boolean checkManyShakes(GameModel.Case passedCase, float[] diffs){
+	public boolean checkManyShakes(GameModel.Case passedCase, double[] diffs){
 		switch(passedCase){
-		case MANYSHAKESX:
-			return checkShakeAlongAxis(diffs[0],medShake);
-//		case MANYSHAKESY:
-//			return checkShakeAlongAxis(diffs[1],medShake);
-//		case MANYSHAKESZ:
-//			return checkShakeAlongAxis(diffs[2],medShake);
-		default:
-			return false;
-		}
+			case MANYSHAKESX:
+				return checkShakeAlongAxis(diffs[0],medShake);
+	//		case MANYSHAKESY:
+	//			return checkShakeAlongAxis(diffs[1],medShake);
+	//		case MANYSHAKESZ:
+	//			return checkShakeAlongAxis(diffs[2],medShake);
+			default:
+				return false;
+			}
 	}
 	
-	public CaseResult checkXShake(float[] diffs){
+	public CaseResult checkXShake(double[] diffs){
 		CaseResult myResult=CaseResult.NONE;
 		//x axis shake. 
 		//fail:yDiff>cutoff2Fail
@@ -75,7 +102,7 @@ public class CaseChecks {
 		return myResult;
 	}
 	
-	public CaseResult checkYShake(float[] diffs){
+	public CaseResult checkYShake(double[] diffs){
 		CaseResult myResult=CaseResult.NONE;
 		//y axis shake. 
 		//fail:xDiff>cutoff2Fail
@@ -92,7 +119,7 @@ public class CaseChecks {
 		return myResult;
 	}
 	
-	public CaseResult checkZShake(float[] diffs){
+	public CaseResult checkZShake(double[] diffs){
 		CaseResult myResult=CaseResult.NONE;
 		//z axis shake
 		//fail:yDiff or xDiff >cutoff2Fail
@@ -115,7 +142,7 @@ public class CaseChecks {
 	 * @param diffs- the 3 membered array of {x-xLast,y-yLast,z-zLast}
 	 * @return-PASS if meets pass criteria NONE otherwise
 	 */
-	public CaseResult checkFlick(float[] diffs){
+	public CaseResult checkCast(double[] diffs){
 		//fail: Heavy shake in z axis
         //pass: Light Shake in x and y axis
 		boolean xChk=checkShakeAlongAxis(diffs[0],heavyShake);
@@ -134,7 +161,7 @@ public class CaseChecks {
 	 * @param diffs- the 3 membered array of {x-xLast,y-yLast,z-zLast}
 	 * @return-FAIL if meets any fail criteria, NONE otherwise
 	 */
-	public CaseResult checkForSensorMovementWhenExpectingTap(float[] diffs){
+	public CaseResult checkForSensorMovementWhenExpectingTap(double[] diffs){
 		//fail: any shake along an axis
         //pass: the sensor does not detect an Accelerometer Case has occurred
 		 	boolean xChk=checkShakeAlongAxis(diffs[0],heavyShake-4);
@@ -155,29 +182,29 @@ public class CaseChecks {
 	 * @param cutoff-value that is checked against coordinate change
 	 * @return-true if a 1D shake has occurred
 	 */
-	public boolean checkShakeAlongAxis(float diff,float cutoff){
+	public boolean checkShakeAlongAxis(double diff,double cutoff){
 		return Math.abs(diff)>cutoff;
 	}
 	/*
 	private void lessenShakeRequirements(){
-		lightShake = (float) 1.4;
-	    medShake = (float) 3;
-	    heavyShake = (float)9;
-	    veryHeavyShake=(float)16;
+		lightShake = (double) 1.4;
+	    medShake = (double) 3;
+	    heavyShake = (double)9;
+	    veryHeavyShake=(double)16;
 	}
 	
 	private void resetShakeRequirements(){
-		lightShake = (float) 1.8;
-	    medShake = (float) 4;
-	    heavyShake = (float)11;
-	    veryHeavyShake=(float)17;
+		lightShake = (double) 1.8;
+	    medShake = (double) 4;
+	    heavyShake = (double)11;
+	    veryHeavyShake=(double)17;
 	}
 	
 	private void increaseShakeRequirements(){
-		lightShake = (float) 2.3;
-	    medShake = (float) 5;
-	    heavyShake = (float)12;
-	    veryHeavyShake=(float)18;
+		lightShake = (double) 2.3;
+	    medShake = (double) 5;
+	    heavyShake = (double)12;
+	    veryHeavyShake=(double)18;
 	}
 	*/
 

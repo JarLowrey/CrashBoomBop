@@ -1,0 +1,275 @@
+<!-- NOTE: xmlns:ads=""http://schemas.android.com/apk/res-auto" is required for ADS 
+			ex) https://developers.google.com/mobile-ads-sdk/docs/admob/fundamentals	-->
+
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/tile_black_repeat"
+    >
+    
+    
+    <!-- GAME PLAY SCREEN -->
+    
+    <!-- Swipe listener is setup to gameWindow (and not the parent) as gameWindow covers the patent and hides it from view -->
+	<RelativeLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:id="@+id/gameWindow" >
+	    
+	    <!-- detectTapArea gives margin around edge of screen so small accidental taps won't be registered. 
+	    BUT if a user hits the detectTapArea out of the proper case, then he fails that case -->
+	    <RelativeLayout
+	        android:id="@+id/detectTapArea"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+			android:layout_alignParentRight="true"
+	        android:layout_alignParentTop="true"
+	        android:layout_alignParentBottom="true"
+	        android:layout_marginLeft="5dp"
+	        android:layout_marginRight="5dp"
+	        android:layout_marginTop="50dp"
+	        android:layout_marginBottom="50dp"
+	        android:text="" />
+	    
+	    <ImageView
+	        android:id="@+id/fail_or_reward_image"
+	        android:layout_width="@dimen/game_fail_or_reward_image_length"
+	        android:layout_height="@dimen/game_fail_or_reward_image_length"
+	        android:layout_centerHorizontal="true"
+	        android:layout_centerVertical="true"/>
+	    
+	    <ImageView
+	        android:id="@+id/splat"
+	        android:layout_width="@dimen/game_splat_length"
+	        android:layout_height="@dimen/game_splat_length"
+	        android:layout_centerHorizontal="true"
+	        android:layout_centerVertical="true"/>
+	    
+	    
+	    <ImageView
+	        android:id="@+id/phoneImage"
+	        android:background="@drawable/phone"
+	        android:layout_width="75dp"
+	        android:layout_height="150dp"
+	        android:visibility="invisible"
+	        android:layout_centerInParent="true"/>
+	    
+	    <TextView
+	        android:id="@+id/bonusTimeRemaining"
+	        style="@style/CurrentCaseText"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentTop="true"
+	        android:layout_centerHorizontal="true"
+	        android:text="" />
+	    
+	    <Button
+	        android:id="@+id/movingBtn"
+	        style="@style/GameText"
+	        android:layout_width="10dp"
+	    	android:layout_height="10dp"
+	    	android:layout_centerHorizontal="true"
+	    	android:layout_centerVertical="true"
+	        android:text="Tap Me" />
+	    
+		<view.DrawTextPanel
+	        android:id="@+id/score"
+	        android:layout_alignParentTop="true"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="@dimen/activity_margin_xlarge"
+	        android:layout_width="match_parent"
+	        android:layout_height="@dimen/score_canvas_height"
+	        android:visibility="visible"
+	        />
+	    
+	    <RelativeLayout
+	        android:id="@+id/heartGroup"
+	        android:layout_alignParentLeft="true"
+	        android:layout_alignParentTop="true"
+	        android:layout_marginTop="@dimen/activity_vertical_margin"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+	        />
+	        	    
+	    <Button
+	        android:id="@+id/pause_or_play"
+	        android:background="@drawable/ic_action_pause"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignParentTop="true"
+	        android:layout_marginTop="@dimen/activity_vertical_margin"
+	        android:layout_marginRight="@dimen/activity_horizontal_margin"
+	        android:layout_width="@dimen/ic_small"
+	        android:layout_height="@dimen/ic_small"        
+	        />
+	    
+	        <TextView
+	        android:id="@+id/pauseText"
+	        style="@style/VeryLargeText"
+	        android:textColor="@color/light_yellow"
+	        android:alpha="1.0"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true"
+	        android:layout_centerVertical="true"
+	        android:text="Paused" />  
+	                 
+    </RelativeLayout>
+        
+        
+        
+    <!-- GAME OVER SCREEN -->
+        
+    <RelativeLayout
+	    android:id="@+id/gameOverWindow" 
+	    android:visibility="gone"
+        android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+        >
+	    
+        <!-- GAME OVER title -->
+        <TextView
+            style="@style/VeryLargeText"
+            android:id="@+id/gameOverTitle"
+            android:textColor="@color/light_blue"
+            android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true"
+            android:layout_above="@+id/gameOverMiddleContent"
+            android:paddingBottom="30dp"
+	        android:text="GAME OVER"
+            />
+        
+        <!-- The middle screen shows score, best, and average response -->
+        <RelativeLayout
+            android:id="@+id/gameOverMiddleContent"
+        	android:background="@drawable/gameover_background"
+        	android:layout_centerInParent="true"
+            android:layout_width="@dimen/game_over_dialog_width"
+	        android:layout_height="@dimen/game_over_dialog_height"
+	        >
+	        <ImageView
+	            android:layout_marginLeft="15dp"
+	            android:id="@+id/gameoverMedal"
+	            android:layout_width="@dimen/medal_len"
+	            android:layout_height="@dimen/medal_len"
+	            android:layout_alignParentLeft="true"
+	            android:layout_centerVertical="true"/>
+	        
+	        <RelativeLayout 
+	            android:id="@+id/gameOverViewsOnRight"
+	            android:layout_width="170dp"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentRight="true"
+		        android:layout_marginRight="20dp"
+		        android:layout_marginTop="20dp"
+		        android:layout_marginBottom="20dp">
+		        <RelativeLayout
+		            android:id="@+id/gameoverCurrentScore"
+		            android:layout_alignParentLeft="true"
+		            android:layout_alignParentTop="true"
+		            android:layout_width="@dimen/game_over_score_width"
+		        	android:layout_height="wrap_content"
+		            >
+			        <TextView
+			            style="@style/GameText"
+			            android:id="@+id/gameOverCurrentScoreTitle"
+			            android:textColor="@color/light_yellow"
+			            android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:text="SCORE"
+			            />
+	
+			        <TextView
+			            android:id="@+id/gameOverCurrentScoreValue"
+			            style="@style/GameText"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_alignRight="@+id/gameOverCurrentScoreTitle"
+			            android:layout_below="@+id/gameOverCurrentScoreTitle"
+			            android:text="1" />
+	
+		        </RelativeLayout>
+		        <RelativeLayout
+		            android:id="@+id/gameoverBestScore"
+		            android:layout_width="wrap_content"
+		        	android:layout_height="wrap_content"
+		        	android:layout_alignParentRight="true"
+		        	android:layout_alignParentTop="true"
+		            >
+			        <TextView
+			            style="@style/GameText"
+			            android:id="@+id/gameOverBestScoreTitle"
+			            android:textColor="@color/light_yellow"
+			            android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+		        		android:layout_alignParentRight="true"
+				        android:text="BEST"
+			            />
+	
+			        <TextView
+			            android:id="@+id/gameOverBestScoreValue"
+			            style="@style/GameText"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+		        		android:layout_alignParentRight="true"
+			            android:layout_below="@+id/gameOverBestScoreTitle"
+			            android:text="2" />
+	
+			        </RelativeLayout>
+
+		        <RelativeLayout
+		            android:layout_width="@dimen/game_over_response_time_width"
+		            android:layout_height="wrap_content"
+		            android:layout_alignParentLeft="true"
+		            android:layout_alignParentBottom="true">
+		
+		            <TextView
+		                android:id="@+id/gameOverAvgTimeTitle"
+		                android:textColor="@color/light_yellow"
+		                style="@style/GameText"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:layout_alignParentLeft="true"
+		                android:text="AVG RESPONSE" />
+		
+		            <TextView
+		                android:id="@+id/gameOverAvgTimeValue"
+		                style="@style/GameText"
+		                android:layout_width="wrap_content"
+		                android:layout_below="@+id/gameOverAvgTimeTitle"
+				        android:layout_alignParentRight="true"
+				        android:text="#.##"/>
+		        </RelativeLayout>
+	        </RelativeLayout>
+        </RelativeLayout>
+
+        <!-- share/exit buttons -->
+        <RelativeLayout
+            android:id="@+id/gameOverViewsOnBottom"
+            android:layout_width="@dimen/game_over_btns_width"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/gameOverMiddleContent" >
+
+            <Button
+                android:id="@+id/gameOverAccept"
+                android:layout_width="@dimen/ic_med"
+                android:layout_height="@dimen/ic_med"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/ic_action_accept" />
+
+            <Button
+                android:id="@+id/gameOverShare"
+                android:layout_width="@dimen/ic_med"
+                android:layout_height="@dimen/ic_med"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_action_btn_share" />
+        </RelativeLayout>
+        
+	</RelativeLayout> <!-- End of Game over screen -->
+   
+</RelativeLayout>

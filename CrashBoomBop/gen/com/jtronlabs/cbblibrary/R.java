@@ -102,12 +102,12 @@ public final class R {
 		public static final int ic_play = 0x7f020018;
 		public static final int ic_share = 0x7f020019;
 		public static final int j_tron_labs_logo = 0x7f02001a;
-		public static final int main_ic_cart_purchase = 0x7f02001c;
-		public static final int medal_bronze = 0x7f02001d;
-		public static final int medal_gold = 0x7f02001e;
-		public static final int medal_platinum = 0x7f02001f;
-		public static final int medal_silver = 0x7f020020;
-		public static final int navigation_btn = 0x7f020021;
+		public static final int main_ic_cart_purchase = 0x7f02001b;
+		public static final int medal_bronze = 0x7f02001c;
+		public static final int medal_gold = 0x7f02001d;
+		public static final int medal_platinum = 0x7f02001e;
+		public static final int medal_silver = 0x7f02001f;
+		public static final int navigation_btn = 0x7f020020;
 		public static final int phone = 0x7f020022;
 		public static final int phone_tap = 0x7f020023;
 		public static final int profile_bests = 0x7f020024;
@@ -129,24 +129,42 @@ public final class R {
 		public static final int toast_exciting = 0x7f020034;
 	}
 	public static final class id {
-		public static final int gameOverAccept = 0x7f0c0041;
-		public static final int gameOverAvgTimeTitle = 0x7f0c003d;
-		public static final int gameOverAvgTimeValue = 0x7f0c003e;
-		public static final int gameOverBestScoreTitle = 0x7f0c003b;
-		public static final int gameOverBestScoreValue = 0x7f0c003c;
-		public static final int gameOverCurrentScoreTitle = 0x7f0c0038;
-		public static final int gameOverCurrentScoreValue = 0x7f0c0039;
-		public static final int gameOverMiddleContent = 0x7f0c0034;
-		public static final int gameOverRoot = 0x7f0c0031;
-		public static final int gameOverShare = 0x7f0c0042;
-		public static final int gameOverSpaceAbove = 0x7f0c0033;
-		public static final int gameOverSpaceBelow = 0x7f0c003f;
-		public static final int gameOverTitle = 0x7f0c0032;
-		public static final int gameOverViewsOnBottom = 0x7f0c0040;
-		public static final int gameOverViewsOnRight = 0x7f0c0036;
-		public static final int gameoverBestScore = 0x7f0c003a;
-		public static final int gameoverCurrentScore = 0x7f0c0037;
-		public static final int gameoverMedal = 0x7f0c0035;
+		public static final int bonusTimeRemaining = 0x7f0c0005;
+		public static final int detectTapArea = 0x7f0c0001;
+		public static final int fail_or_reward_image = 0x7f0c0002;
+		public static final int gameOverAccept = 0x7f0c0019;
+		public static final int gameOverAvgTimeTitle = 0x7f0c0016;
+		public static final int gameOverAvgTimeValue = 0x7f0c0017;
+		public static final int gameOverBestScoreTitle = 0x7f0c0014;
+		public static final int gameOverBestScoreValue = 0x7f0c0015;
+		public static final int gameOverCurrentScoreTitle = 0x7f0c0011;
+		public static final int gameOverCurrentScoreValue = 0x7f0c0012;
+		public static final int gameOverMiddleContent = 0x7f0c000d;
+		public static final int gameOverShare = 0x7f0c001a;
+		public static final int gameOverTitle = 0x7f0c000c;
+		public static final int gameOverViewsOnBottom = 0x7f0c0018;
+		public static final int gameOverViewsOnRight = 0x7f0c000f;
+		public static final int gameOverWindow = 0x7f0c000b;
+		public static final int gameWindow = 0x7f0c0000;
+		public static final int gameoverBestScore = 0x7f0c0013;
+		public static final int gameoverCurrentScore = 0x7f0c0010;
+		public static final int gameoverMedal = 0x7f0c000e;
+		public static final int heartGroup = 0x7f0c0008;
+		public static final int introLogo = 0x7f0c001d;
+		public static final int introText = 0x7f0c001c;
+		public static final int jtronlabs = 0x7f0c0023;
+		public static final int mainBtnsPlayAndProfile = 0x7f0c001f;
+		public static final int mainGraphic = 0x7f0c001e;
+		public static final int mainScreen = 0x7f0c001b;
+		public static final int movingBtn = 0x7f0c0006;
+		public static final int pauseText = 0x7f0c000a;
+		public static final int pause_or_play = 0x7f0c0009;
+		public static final int phoneImage = 0x7f0c0004;
+		public static final int playBtn = 0x7f0c0020;
+		public static final int profileBtn = 0x7f0c0021;
+		public static final int purchase = 0x7f0c0022;
+		public static final int score = 0x7f0c0007;
+		public static final int splat = 0x7f0c0003;
 		public static final int toastText = 0x7f0c0044;
 		public static final int toast_layout_root = 0x7f0c0043;
 	}
@@ -156,8 +174,10 @@ public final class R {
 		public static final int game_mode_timed = 0x7f090002;
 	}
 	public static final class layout {
-		public static final int custom_gameover = 0x7f030004;
-		public static final int custom_toast = 0x7f030005;
+		public static final int activity_game = 0x7f030000;
+		public static final int activity_intro = 0x7f030001;
+		public static final int activity_main = 0x7f030002;
+		public static final int custom_toast = 0x7f030004;
 	}
 	public static final class raw {
 		public static final int bonus_passed = 0x7f050000;

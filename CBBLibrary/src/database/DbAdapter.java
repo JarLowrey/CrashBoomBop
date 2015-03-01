@@ -15,7 +15,6 @@ public abstract class DbAdapter {
     public static String DATABASE_NAME = "crashBoomBop.db";
     public static final int DATABASE_VERSION = 2;
     public static final String GAME_STATS_DB_TABLE = "GameStatsTable";
-    public static final String USER_INFO_DB_TABLE = "UserInfoTable";
 
     private static DatabaseHelper ourHelper;
     public Context ctx;

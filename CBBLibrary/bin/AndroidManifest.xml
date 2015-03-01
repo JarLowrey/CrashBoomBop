@@ -8,13 +8,20 @@
         android:minSdkVersion="4"
         android:targetSdkVersion="21" />
 
+    <!-- 
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="activities.MainActivityInLibrary"
             android:label="@string/app_name" >
+        </activity>
+        
+        <activity
+            android:name="activities.IntroActivityInLibary"
+            android:label="@string/app_name" 
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,5 +29,5 @@
             </intent-filter>
         </activity>
     </application>
-
+-->
 </manifest>
